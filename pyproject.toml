@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beads-tracker"
+version = "0.1.0"
+description = "Distributed issue tracker - Python port of beads (bd)"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+bd = "beads.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
