@@ -34,7 +34,7 @@ def stats(ctx: BeadsContext) -> None:
         return
 
     click.echo("Project Statistics")
-    click.echo("─" * 40)
+    click.echo("-" * 40)
     click.echo(f"  Total:       {s.total_issues}")
     click.echo(f"  Open:        {s.open_issues}")
     click.echo(f"  In Progress: {s.in_progress_issues}")

@@ -44,7 +44,7 @@ def parse_jsonl(jsonl_path: str) -> tuple[list[Issue], list[str]]:
     if not os.path.exists(jsonl_path):
         return issues, deletion_ids
 
-    with open(jsonl_path) as f:
+    with open(jsonl_path, encoding="utf-8") as f:
         for line_num, line in enumerate(f, 1):
             line = line.strip()
             if not line:

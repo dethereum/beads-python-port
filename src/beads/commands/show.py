@@ -36,9 +36,9 @@ def show(ctx: BeadsContext, issue_id: str) -> None:
         return
 
     # Header
-    click.echo(f"{'─' * 60}")
+    click.echo(f"{'-' * 60}")
     click.echo(f"  {issue.id}")
-    click.echo(f"{'─' * 60}")
+    click.echo(f"{'-' * 60}")
     click.echo(f"  Title:    {issue.title}")
     click.echo(f"  Status:   {issue.status}")
     click.echo(f"  Priority: {format_priority(issue.priority)} ({priority_label(issue.priority)})")
@@ -95,14 +95,14 @@ def show(ctx: BeadsContext, issue_id: str) -> None:
             dep_issue = ctx.store.get_issue(dep.depends_on_id)
             dep_title = dep_issue.title if dep_issue else "(unknown)"
             dep_status = dep_issue.status if dep_issue else "?"
-            click.echo(f"    → {dep.depends_on_id} [{dep.type}] ({dep_status}) {dep_title}")
+            click.echo(f"    -> {dep.depends_on_id} [{dep.type}] ({dep_status}) {dep_title}")
 
     # Dependents
     dependents = ctx.store.get_dependents(full_id)
     if dependents:
         click.echo(f"\n  Blocked by this:")
         for dep in dependents:
-            click.echo(f"    ← {dep.id} ({dep.status}) {dep.title}")
+            click.echo(f"    <- {dep.id} ({dep.status}) {dep.title}")
 
     # Comments
     comments = ctx.store.get_comments(full_id)

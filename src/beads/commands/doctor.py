@@ -20,7 +20,7 @@ def doctor(ctx: BeadsContext) -> None:
     issues_found = 0
 
     click.echo("Beads Doctor")
-    click.echo("─" * 40)
+    click.echo("-" * 40)
 
     # Check .beads/ directory
     click.echo(f"  .beads/ directory: {ctx.beads_dir}")

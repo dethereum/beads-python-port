@@ -44,7 +44,7 @@ def flush_to_jsonl(store: Storage, jsonl_path: str, verbose: bool = False) -> in
     tmp_path = jsonl_path + ".tmp"
     count = 0
     try:
-        with open(tmp_path, "w") as f:
+        with open(tmp_path, "w", encoding="utf-8") as f:
             for issue in enriched:
                 line = json.dumps(issue.to_dict(), ensure_ascii=False, separators=(",", ":"))
                 f.write(line + "\n")

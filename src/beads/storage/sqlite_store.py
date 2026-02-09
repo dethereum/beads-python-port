@@ -650,7 +650,7 @@ class SQLiteStorage(Storage):
         # Cycle detection
         if self.has_cycle(dep.issue_id, dep.depends_on_id):
             raise ValueError(
-                f"Adding dependency {dep.issue_id} → {dep.depends_on_id} would create a cycle"
+                f"Adding dependency {dep.issue_id} -> {dep.depends_on_id} would create a cycle"
             )
         self._conn.execute(
             "INSERT OR IGNORE INTO dependencies (issue_id, depends_on_id, type, created_at, created_by, metadata, thread_id) "
