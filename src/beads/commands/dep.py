@@ -66,7 +66,7 @@ def dep_remove(ctx: BeadsContext, issue_id: str, depends_on_id: str) -> None:
     ctx.auto_flush()
 
     if not ctx.quiet:
-        click.echo(f"Removed dependency: {full_issue} → {full_depends}")
+        click.echo(f"Removed dependency: {full_issue} -> {full_depends}")
 
 
 @dep.command("list")
@@ -94,11 +94,11 @@ def dep_list(ctx: BeadsContext, issue_id: str) -> None:
             dep_issue = ctx.store.get_issue(d.depends_on_id)
             title = dep_issue.title if dep_issue else "(unknown)"
             status = dep_issue.status if dep_issue else "?"
-            click.echo(f"  → {d.depends_on_id} [{d.type}] ({status}) {truncate(title)}")
+            click.echo(f"  -> {d.depends_on_id} [{d.type}] ({status}) {truncate(title)}")
     else:
         click.echo(f"No dependencies for {full_id}")
 
     if dependents:
         click.echo(f"\nDepended on by:")
         for d in dependents:
-            click.echo(f"  ← {d.id} ({d.status}) {truncate(d.title)}")
+            click.echo(f"  <- {d.id} ({d.status}) {truncate(d.title)}")
